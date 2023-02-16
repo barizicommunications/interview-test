@@ -16,9 +16,7 @@ use App\Http\Controllers\PostController;
 |
 */
 
-// Route::get('/', function () {
-//     return view('welcome');
-// });
+Route::get('/','\App\Http\Controllers\PostController@index')->name('home');
 
 Route::resource('authors', AuthorController::class);
 
