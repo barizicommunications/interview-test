@@ -29,3 +29,5 @@ Route::resource('posts', PostController::class);
 Route::get('/posts-by-category/{id}','\App\Http\Controllers\PostController@postsByCategory')->name('posts-by-category');
 
 Route::get('/posts-by-author/{id}','\App\Http\Controllers\PostController@postsByAuthor')->name('posts-by-author');
+
+Route::post('/search-posts','\App\Http\Controllers\PostController@searchPosts')->name('search-posts');

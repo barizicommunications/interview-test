@@ -114,8 +114,9 @@ class PostController extends Controller
         # code...
         $categories = Category::all();
         $authors = Author::all();
-        $postschunk = Post::where('title',  'like', '%'.$this->argument('search').'%')
-        ->orWhereRelation('author', 'name',  'like', '%'.$this->search.'%')
+        $postschunk = Post::where('title',  'like', '%'.$request->search.'%')
+        ->orWhereRelation('author', 'name',  'like', '%'.$request->search.'%')
+        ->get()
         ->chunk(3);
         return view('posts.index', compact('postschunk', 'categories', 'authors'));
     }
