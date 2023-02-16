@@ -35,6 +35,8 @@ class NewPostEmail extends Mailable
      */
     public function build()
     {
-        return $this->subject('New post Created');
+        return $this->subject('New Post Created')
+        ->view('emails.new-post-created');
+        
     }
 }
