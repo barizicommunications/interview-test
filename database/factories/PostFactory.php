@@ -22,8 +22,9 @@ class PostFactory extends Factory
      */
     public function definition()
     {
+        $title = ucwords($this->faker->catchPhrase .' '.$this->faker->bs);
         return [
-            'title' => $this->faker->sentence(),
+            'title' => $title,
             'featured_image_url' => $this->faker->imageUrl(640,480),
             'category_id' => Category::all()->random()->id,
             'author_id' => Author::all()->random()->id,
