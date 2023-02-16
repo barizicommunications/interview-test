@@ -41,6 +41,13 @@ class PostsSearch extends Command
         $posts = Post::where('title',  'like', '%'.$this->argument('search').'%')
                 ->orWhere('body',  'like', '%'.$this->argument('search').'%')
                 ->get();
-        $this->info($posts);
+        
+        if ($posts->count() > 0) {
+            # code...
+            $this->info($posts);
+        } else {
+            # code...
+            $this->info('NO RECORDS FOUND');
+        }
     }
 }
