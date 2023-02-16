@@ -16,6 +16,8 @@ Clone this repository on your machine
     - `posts`
     - `authors`
     - `categories`
+- Create a separate migration to add the column `featured_image_url` to the `posts` table.
+- Ensure foreign keys are set up correctly.
 - create a seeder to populate the `authors` and `categories` tables with at least 5 records each.
 - create a seeder to populate the `posts` table with at least 10 records.
 - Display the records in the database on the home page, author page and category page.
@@ -37,10 +39,14 @@ Clone this repository on your machine
 
 - Create an api endpoint that will return a list of posts in JSON format with the following fields (use API resources):
     - `title`
+    - `slug`
     - `body`
+    - `featured_image_url`
     - `author`
     - `category`
+    - `created_at`
+- Limit the number of posts returned to 10.
+- Allow the number of posts returned to be changed by passing a query parameter to the endpoint.
 
 ## The Deliverable
-
 - Create a pull request with your changes.
