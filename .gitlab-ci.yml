@@ -10,7 +10,6 @@ composer:
   # What to run on the job.
   script:
       - composer install --prefer-dist --no-ansi --no-interaction --no-progress --no-scripts
-      - cp .env.example .env
-      - php artisan key:generate
-      - php artisan migrate:fresh --seed
+      - php artisan migrate
+      - php artisan db:seed
       - php artisan test
