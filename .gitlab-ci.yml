@@ -1,0 +1,16 @@
+# import laravel free docker image
+image: lorisleiva/laravel-docker:latest
+
+# The job's name.
+composer:
+
+  # The job's stage (build, test or deploy).
+  stage: build
+  
+  # What to run on the job.
+  script:
+      - composer install --prefer-dist --no-ansi --no-interaction --no-progress --no-scripts
+      - cp .env.example .env
+      - php artisan key:generate
+      - php artisan migrate:fresh --seed
+      - php artisan test
