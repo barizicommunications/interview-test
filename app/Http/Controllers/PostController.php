@@ -4,6 +4,8 @@ namespace App\Http\Controllers;
 
 use App\Models\Post;
 use Illuminate\Http\Request;
+use App\Models\Category;
+use App\Models\Author;
 
 class PostController extends Controller
 {
@@ -16,8 +18,10 @@ class PostController extends Controller
     {
         //
         // return view('welcome');
+        $categories = Category::all();
+        $authors = Author::all();
         $postschunk = Post::all()->chunk(3);
-        return view('posts.index', compact('postschunk'));
+        return view('posts.index', compact('postschunk', 'categories', 'authors'));
     }
 
     /**
@@ -50,6 +54,7 @@ class PostController extends Controller
     public function show(Post $post)
     {
         //
+        return view('posts.show', compact('post'));
     }
 
     /**
@@ -84,5 +89,34 @@ class PostController extends Controller
     public function destroy(Post $post)
     {
         //
+    }
+
+    public function postsByCategory($id)
+    {
+        # code...
+        $categories = Category::all();
+        $authors = Author::all();
+        $postschunk = Post::where('category_id', $id)->get()->chunk(3);
+        return view('category.index', compact('postschunk', 'categories', 'authors'));
+    }
+
+    public function postsByAuthor($id)
+    {
+        # code...
+        $categories = Category::all();
+        $authors = Author::all();
+        $postschunk = Post::where('author_id', $id)->get()->chunk(3);
+        return view('posts.index', compact('postschunk', 'categories', 'authors'));
+    }
+
+    public function searchPosts(Request $request)
+    {
+        # code...
+        $categories = Category::all();
+        $authors = Author::all();
+        $postschunk = Post::where('title',  'like', '%'.$this->argument('search').'%')
+        ->orWhereRelation('author', 'name',  'like', '%'.$this->search.'%')
+        ->chunk(3);
+        return view('posts.index', compact('postschunk', 'categories', 'authors'));
     }
 }

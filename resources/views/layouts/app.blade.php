@@ -11,11 +11,7 @@
         </style>
     </head>
     <body>
-
-        <div class="header text-center">
-            <h1>Interview Test</h1>
-        </div>
-
+        
         <div class="container">
             @yield('content')
         </div>
