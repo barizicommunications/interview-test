@@ -21,10 +21,16 @@ class PostSeeder extends Seeder
 
         $posts = Post::factory()->count(30)->create(); 
 
-        $posts->each(function($post) {
-            $author = Author::where('id', $post->author_id)->first();
-            $post = Post::where('id', $post->id)->first();
-            dispatch(new NewPostCreatedJob($author, $post));
-        });
+        try {
+            //code...
+            $posts->each(function($post) {
+                $author = Author::where('id', $post->author_id)->first();
+                $post = Post::where('id', $post->id)->first();
+                dispatch(new NewPostCreatedJob($author, $post));
+            });
+        } catch (\Throwable $th) {
+            //throw $th;
+        }
+       
     }
 }
