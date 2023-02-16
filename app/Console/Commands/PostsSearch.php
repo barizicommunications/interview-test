@@ -3,6 +3,7 @@
 namespace App\Console\Commands;
 
 use Illuminate\Console\Command;
+use App\Models\Post;
 
 class PostsSearch extends Command
 {
@@ -11,14 +12,14 @@ class PostsSearch extends Command
      *
      * @var string
      */
-    protected $signature = 'command:name';
+    protected $signature = 'search:posts {search}';
 
     /**
      * The console command description.
      *
      * @var string
      */
-    protected $description = 'Command description';
+    protected $description = 'Search post by title or body content';
 
     /**
      * Create a new command instance.
@@ -37,6 +38,9 @@ class PostsSearch extends Command
      */
     public function handle()
     {
-        return 0;
+        $posts = Post::where('title',  'like', '%'.$this->argument('search').'%')
+                ->orWhere('body',  'like', '%'.$this->argument('search').'%')
+                ->get();
+        $this->info($posts);
     }
 }
