@@ -16,8 +16,8 @@ class PostController extends Controller
     {
         //
         // return view('welcome');
-        $posts = Post::all();
-        return view('posts.index', compact('posts'));
+        $postschunk = Post::all()->chunk(3);
+        return view('posts.index', compact('postschunk'));
     }
 
     /**
