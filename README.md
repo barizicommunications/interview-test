@@ -49,4 +49,4 @@ Clone this repository on your machine
 - Allow the number of posts returned to be changed by passing a query parameter to the endpoint.
 
 ## The Deliverable
-- Create a pull request with your changes.
+- Create a pull request with your changes and inform the HR on completion.
