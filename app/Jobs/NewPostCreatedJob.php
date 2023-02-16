@@ -10,6 +10,8 @@ use Illuminate\Queue\InteractsWithQueue;
 use Illuminate\Queue\SerializesModels;
 use App\Models\Author;
 use App\Models\Post;
+use Illuminate\Support\Facades\Mail;
+use App\Mail\NewPostEmail;
 
 class NewPostCreatedJob implements ShouldQueue
 {
@@ -38,6 +40,6 @@ class NewPostCreatedJob implements ShouldQueue
     {
         //
         $recipient = $this->author['email'];
-		Mail::to($recipient)->send(new NewpostNoteEmail($this->author, $this->post));
+		Mail::to($recipient)->send(new NewpostEmail($this->author, $this->post));
     }
 }
