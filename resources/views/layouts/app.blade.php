@@ -10,14 +10,14 @@
             <h2>Blog Name</h2>
         </div>
 
-        <div class="row">
-            <!-- BLOG BODY -->
+        <div class="container">
+            @yield('content')
         </div>
 
         <div class="footer">
             <h2>Footer</h2>
         </div>
-        
+
         @livewireScripts
 
     </body>
