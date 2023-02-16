@@ -19,7 +19,7 @@ class CreatePostsTable extends Migration
             $table->bigInteger('category_id')->unsigned()->nullable();
             $table->longText('title')->nullable();
             $table->longText('slug')->nullable();
-            $table->longText('content')->nullable();
+            $table->longText('body')->nullable();
             $table->timestamps();
             $table->foreign('author_id')->references('id')->on('authors')->onDelete('cascade');
             $table->foreign('category_id')->references('id')->on('categories')->onDelete('cascade');
