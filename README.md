@@ -50,3 +50,17 @@ Clone this repository on your machine
 
 ## The Deliverable
 - Create a pull request with your changes and inform the HR on completion.
+
+## Console Command
+- The console command created is `search:posts {search}`
+
+## Send Mail Job
+- A send mail job is dispatched during database seed to the respective Author.
+
+## Other Notables
+- The home page lists all the blog posts.
+- You can access blogs for specific Author by clicking filter by Author on the top right of the blog page.
+- You can access blogs for specific Category by clicking filter by Category on the top right of the blog page.
+- You can search for a blog post by title or author by using the search input at the top of the page then click search.
+- The bonus API Endpoint is also attended
+
